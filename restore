@@ -1,0 +1,21 @@
+#!/bin/bash
+
+echo listing backups
+cd backups && ls|grep .ab && cd ..
+
+echo -n "${bldred}${txtbld}Enter date code from custom backup if you plan to use it. Otherwise hit enter${txtrst} "
+if read text; then
+  TEXT=$text
+fi
+
+echo $text
+defeault="adb restore backups/backup.ab"
+CUSTOM="adb restore backups/backup_$text.ab"
+
+select ynq in "default" "custom" "quit"; do
+    case $ynq in
+	default ) $NEW;break ;;
+	custom ) $CUSTOM ;break ;;
+	quit ) echo Bye Bye ;exit ;;
+esac;
+done

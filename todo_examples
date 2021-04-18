@@ -1,0 +1,29 @@
+
+
+yesreadme () { cat readme; }
+
+noreadme () { echo "Moving on"; }
+
+echo "Would you like to view the readme? (yes or no)"
+
+read yesorno
+
+if [ "$yesorno" = yes ]; then
+    yesreadme && read -p "$Press [Enter] key to continue"
+
+elif [ "$yesorno" = no ]; then
+    noreadme
+else
+    echo "Not a valid answer."
+    exit 1
+fi
+
+# You might see some errors at the end. I'm working on that.
+
+#echo "Do you want to extract backup to review files?"
+#select yn in "yes" "no"; do
+#    case $yn in
+#	yes ) ( printf "\x1f\x8b\x08\x00\x00\x00\x00\x00" ; tail -c +25 backup.log ) |  tar xfvz - ;break ;;
+#	no ) echo "Okie Dokie" ;exit ;;
+#esac;
+#done

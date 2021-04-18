@@ -1,0 +1,14 @@
+#!/bin/bash
+
+NEW="adb backup -logk -shared -all -f backups/backup.ab"
+CUSTOM="adb backup -logk -shared -all -f backups/backup_`date +"%m-%d"`.ab"
+
+select ynq in "new" "custom" "delete-all"; do
+    case $ynq in
+	new ) $NEW;break ;;
+	custom ) $CUSTOM ;break ;;
+	delete-all ) if [ -f backups/*.ab  ]; then 
+                    rm backups/*.ab 
+                       fi && echo all backups have been removed ;exit ;;
+esac;
+done
