@@ -9,7 +9,7 @@ if read text; then
 fi
 
 echo $text
-defeault="adb restore backups/backup.ab"
+NEW="adb restore backups/backup.ab"
 CUSTOM="adb restore backups/backup_$text.ab"
 
 select ynq in "default" "custom" "quit"; do
